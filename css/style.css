@@ -1,0 +1,75 @@
+body {
+    text-align: center;
+}
+
+
+
+
+/*
+ * Styles for the Information block
+ */
+
+.info {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+
+    text-align: left;
+}
+
+.info h2 {
+    color: red;
+    margin-bottom: 50px;
+}
+
+
+
+
+/*
+ * Styles for the Congratulations Popup
+ */
+
+.finishPage {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+
+    background-color: white;
+}
+
+.finishPage h1 {
+    font-size: 40px;
+
+    margin-top: 15%;
+
+    color: green;
+}
+
+.finishPage p {
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+.finishPage button {
+    display: inline-block;
+
+    width: 130px;
+    height: 40px;
+
+    cursor: pointer;
+
+    color: white;
+    border: 1px solid #286090;
+    border-radius: 8px;
+    outline: none;
+    background-color: #286090;
+}
