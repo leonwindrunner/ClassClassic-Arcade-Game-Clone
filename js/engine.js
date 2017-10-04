@@ -79,9 +79,9 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions(); //check whether player hit enemies
-        checkDropInWater(); //check whether player drop into water
-        checkGetGem(); //check whether player get the gem
+        player.checkCollisions(); //check whether player hit enemies
+        player.checkDropInWater(); //check whether player drop into water
+        player.checkGetGem(); //check whether player get the gem
         checkGameOver(); //check whether game over
     }
 
@@ -98,40 +98,6 @@ var Engine = (function(global) {
         });
     }
 
-    //check whether player hit enemies
-    function checkCollisions() {
-        if (player.y == allEnemies[0].y && player.x > (allEnemies[0].x - 65) && player.x < (allEnemies[0].x + 80)) {
-            scoreChange(-10);
-        }
-
-        if (player.y == allEnemies[1].y && player.x > (allEnemies[1].x - 65) && player.x < (allEnemies[1].x + 80)) {
-            scoreChange(-10);
-        }
-
-        if (player.y == allEnemies[2].y && player.x > (allEnemies[2].x - 65) && player.x < (allEnemies[2].x + 80)) {
-            scoreChange(-10);
-        }
-
-        if (player.y == allEnemies[3].y && player.x > (allEnemies[3].x - 65) && player.x < (allEnemies[3].x + 80)) {
-            scoreChange(-10);
-        }
-    }
-
-    //check whether player drop into water
-    function checkDropInWater() {
-        if (player.y < 50) {
-            scoreChange(-5);
-        }
-    }
-
-    //check whether player get the gem
-    function checkGetGem() {
-        if (player.x == gem.x && player.y == gem.y) {
-            scoreChange(5);
-            gem.update();
-        }
-    }
-
     //check whether game over
     var finishPag = true;
 
@@ -141,20 +107,6 @@ var Engine = (function(global) {
             $(".timerNum").text(timerCount);
             $(".finishPage").css("display", "block");
         }
-    }
-
-    //when player hit enemies or drop into water, he lose scores
-    //when player get gem, he add scores
-    //finally reset player
-    var newScore = 0;
-    var scoreDiv = document.getElementById("score");
-
-    function scoreChange(num) {
-        newScore = parseInt(scoreDiv.innerHTML);
-        newScore += num;
-        scoreDiv.innerHTML = newScore;
-        player.x = 202;
-        player.y = 392;
     }
 
     /* This function initially draws the "game level", it will then call
